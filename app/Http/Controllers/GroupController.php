@@ -19,7 +19,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('groups.show');
     }
 
     /**
@@ -43,7 +43,7 @@ class GroupController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('groups.edit');
     }
 
     /**

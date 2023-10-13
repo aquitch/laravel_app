@@ -1,0 +1,1 @@
+<p style="text-align:right;">Какая-то компания, 2023</p>

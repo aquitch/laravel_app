@@ -15,7 +15,11 @@ use App\Http\Controllers\GroupController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
 
 Route::resource('groups', GroupController::class);
+
+Route::get('/layout', function () {
+    return view('layouts.app');
+});
