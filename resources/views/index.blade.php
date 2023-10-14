@@ -4,6 +4,6 @@
 
 @section('body')
 <div>
-    <center>Главная страница</center>
+    <center>Главная страница сайта</center>
 </div>
 @endsection
