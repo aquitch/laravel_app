@@ -3,6 +3,9 @@
 @section('title', 'Группы')
 
 @section('body')
+@foreach($groups as $group)
+    {{ $group->name; }}
+@endforeach
 <div class="d-flex justify-content-center">
     <a href="{{ route('groups.create') }}">
         <button type="button" class="btn btn-light">Добавить новую группу</button>

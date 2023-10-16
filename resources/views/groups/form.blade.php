@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-    </head>
-    <body class="antialiased">
-        The list of groups will be placed here soon...
-    </body>
-</html>
+<form class="mb-4 row container-sm justify-content-center" method='POST' action="{{ $action }}">
+    @csrf
+    @method($method)
+    <div class="row">
+        <label class="col-auto" for="name">Название</label> 
+        <input class="form-control" type='text' name='name' id='name' value="{{ isset($group) ? $group->name : '' }}">
+    </div>
+    <div class="mt-2 row">
+        <button class="btn btn-light" action='submit'>Сохранить</button>
+    </div>
+</form>

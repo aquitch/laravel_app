@@ -4,6 +4,7 @@
 
 @section('body')
 <div class="d-flex justify-content-center">
-    Создание новой группы
+    <label for="basic-url" class="form-label">Создание новой группы</label>
 </div>
+    @include('groups.form', ['method' => 'POST', 'action' => route('groups.store')])
 @endsection
