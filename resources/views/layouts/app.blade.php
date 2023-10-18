@@ -20,17 +20,17 @@
     </div>
         <div class="container">
             <div class="row">
-                <div class="col-3 text-light">
+                <div class="col-2 text-light">
                     <div class="d-flex justify-content-center">
-                        Колонка слева
+                        @include('include.l_column')
                     </div>
                 </div>
-                <div class="col-6 text-light">
+                <div class="col-8 text-light">
                 @yield('body')
                 </div>
-                <div class="col-3 text-light">
+                <div class="col-2 text-light">
                     <div class="d-flex justify-content-center">
-                        Колонка справа
+                        @include('include.r_column')
                     </div>
                 </div>
             </div>

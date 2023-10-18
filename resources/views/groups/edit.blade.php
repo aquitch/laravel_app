@@ -4,6 +4,7 @@
 
 @section('body')
 <div class="d-flex justify-content-center">
-    Редактирование группы
+    <label for="basic-url" class="form-label">Редактор групп</label>
 </div>
+@include('groups.form', ['method' => 'PUT', 'action' => route('groups.update', $group)])
 @endsection

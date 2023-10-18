@@ -8,6 +8,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Главная</a>
         <a class="nav-link active" href="{{ route('groups.index') }}">Группы</a>
+        <a class="nav-link disabled" href="#">Студенты</a>
         <a class="nav-link disabled" href="#">Предметы</a>
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Преподаватели</a>
         <a class="nav-link disabled" href="#">Расписание</a>
