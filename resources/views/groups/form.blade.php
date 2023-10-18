@@ -44,7 +44,7 @@
         <select class="form-select" aria-label="Default select example" name="user_id">
             <option selected>Выберите старосту из списка</option>
             @foreach ($students as $student)
-                <option value="{{ $student->id }}" {{ $group->leadOfGroup->id == $student->id ? 'selected' : '' }}>{{ $student->name }}</option>
+                <option value="{{ $student->id }}" {{ isset($group->leadOfGroup) && $group->leadOfGroup->id == $student->id ? 'selected' : '' }}>{{ $student->name }}</option>
             @endforeach
         </select>
     @endif
@@ -53,4 +53,4 @@
     <div class="d-grid mt-3">
         <button class="btn btn-success" type="submit">Сохранить</button>
     </div>
-</from>
+</form>
