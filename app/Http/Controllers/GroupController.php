@@ -64,8 +64,10 @@ class GroupController extends Controller
             'leadOfGroup',
             'students'
             ]);
+
+        $students = User::all();
         
-        return view('groups.edit', compact('group'));
+        return view('groups.edit', compact('group', 'students'));
     }
 
     /**
