@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Group;
+use App\Models\User;
 
 class GroupController extends Controller
 {
@@ -11,7 +13,10 @@ class GroupController extends Controller
      */
     public function index()
     {
-        return view('groups.index');
+        $groups = Group::all();
+        //dd($groups);
+
+        return view('groups.index', compact('groups'));
     }
 
     /**
@@ -19,7 +24,9 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('groups.create');
+        $students = User::all();
+        
+        return view('groups.create', compact('students'));
     }
 
     /**
@@ -27,31 +34,50 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        Group::create(['name' => $name]);
+
+        return redirect()->route('groups.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Group $group)
     {
-        return view('groups.show');
+        $group->load([
+            'leadOfGroup',
+            'students'
+            ]);
+
+        $i = 0;
+        
+        return view('groups.show', compact('group', 'i'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Group $group)
     {
-        return view('groups.edit');
+        $group->load([
+            'leadOfGroup',
+            'students'
+            ]);
+
+        $students = User::all();
+        
+        return view('groups.edit', compact('group', 'students'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Group $group)
     {
-        //
+        $group->update(['name' => $request->name]);
+
+        return redirect()->route('groups.index');
     }
 
     /**
