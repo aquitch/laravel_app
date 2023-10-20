@@ -11,14 +11,14 @@
     <!-- We need 5 rows only --> 
     @if (isset($group))
         @foreach ($group->students as $member)
-            <select class="form-select mb-1" aria-label="Default select example" name="students">
+            <select class="form-select mb-1" aria-label="Default select example" name="students[{{ $loop->index }}]">
                 @foreach ($students as $student)
                     <option value="{{ $student->id }}" {{ $member->id == $student->id ? 'selected' : '' }}>{{ $student->name }}</option>
                 @endforeach
             </select>
             @if ($loop->last && $loop->count < 5)
-                @for ($i = 5 - $loop->count; $i > 0; $i--)
-                    <select class="form-select mb-1" aria-label="Default select example" name="students">
+                @for ($i = $loop->count; $i < 5; $i++)
+                    <select class="form-select mb-1" aria-label="Default select example" name="students[{{ $i }}]">
                             <option selected>Выберите студента из списка</option>
                         @foreach ($students as $student)
                             <option value="{{ $student->id }}">{{ $student->name }}</option>
@@ -29,7 +29,7 @@
         @endforeach
     @else
         @for ($i = 0; $i < 5; $i++)
-            <select class="form-select mb-1" aria-label="Default select example" name="students">
+            <select class="form-select mb-1" aria-label="Default select example" name="students[{{ $i }}]">
                 <option selected>Выберите студента из списка</option>
                 @foreach ($students as $student)
                     <option value="{{ $student->id }}">{{ $student->name }}</option>
@@ -51,6 +51,6 @@
 
     <!-- Submit button-->
     <div class="d-grid mt-3">
-        <button class="btn btn-success" type="submit">Сохранить</button>
+        <button class="btn btn-success" action="submit">Сохранить</button>
     </div>
 </form>

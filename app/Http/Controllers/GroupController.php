@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreGroupRequest;
 use App\Models\Group;
 use App\Models\User;
 
@@ -14,7 +15,6 @@ class GroupController extends Controller
     public function index()
     {
         $groups = Group::all();
-        //dd($groups);
 
         return view('groups.index', compact('groups'));
     }
@@ -32,10 +32,11 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGroupRequest $request)
     {
-        $name = $request->input('name');
-        Group::create(['name' => $name]);
+        //dd($request);
+        dd($request->validated());
+        Group::create($request->validated());
 
         return redirect()->route('groups.index');
     }
@@ -73,9 +74,12 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Group $group)
+    public function update(StoreGroupRequest $request, Group $group)
     {
-        $group->update(['name' => $request->name]);
+        //dd($request);
+        //dd($request->validated());
+
+        $group->load('students')->update($request->validated());
 
         return redirect()->route('groups.index');
     }
