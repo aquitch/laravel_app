@@ -5,6 +5,9 @@
     <!-- Group name -->
     <label for="nameOfGroup" class="form-label mt-1">Имя группы</label>
     <input type="group" class="form-control" name="name" id="nameOfGroup" placeholder="Введите имя группы" value="{{ isset($group->name) ? $group->name : '' }}">
+    @error('name')
+        {{ $message }}<br>
+    @enderror
 
     <!-- Students -->
     <label for="students" class="form-label mt-2">Список студентов</label>
