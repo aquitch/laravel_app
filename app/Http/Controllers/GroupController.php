@@ -34,8 +34,6 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
-        //dd($request);
-        dd($request->validated());
         Group::create($request->validated());
 
         return redirect()->route('groups.index');
@@ -50,10 +48,8 @@ class GroupController extends Controller
             'leadOfGroup',
             'students'
             ]);
-
-        $i = 0;
-        
-        return view('groups.show', compact('group', 'i'));
+     
+        return view('groups.show', compact('group'));
     }
 
     /**
