@@ -18,6 +18,7 @@ class APIGroupController extends Controller
         $info = GroupNameService::disassemble('ПКЭСмз-11');
         dd($info);
         $groups = Group::all();
+        //dd($groups);
 
         return $groups->toJSON();
     }
