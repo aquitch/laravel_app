@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGroupRequest;
+use App\Services\GroupNameService;
 use App\Models\Group;
 use App\Models\User;
 
@@ -14,6 +15,8 @@ class APIGroupController extends Controller
      */
     public function index()
     {
+        $info = GroupNameService::disassemble('ПКЭСмз-11');
+        dd($info);
         $groups = Group::all();
 
         return $groups->toJSON();
