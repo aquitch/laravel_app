@@ -32,8 +32,9 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGroupRequest $request)
+    public function store(Request $request)
     {
+        dd($request->input());
         Group::create($request->validated());
 
         return redirect()->route('groups.index');

@@ -26,30 +26,33 @@ class APIGroupController extends Controller
     {
         $students = User::all();
         
-        return view('groups.create', compact('students'));
+        return $students->toJSON();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGroupRequest $request)
+    public function store(Request $request)
     {
-        Group::create($request->validated());
-
-        return redirect()->route('groups.index');
+        if ($request->name !== null){
+            //dd($request);
+            Group::create(['name' => $request->name]);
+            return 'Done!';
+        }
+        
+        return 'An error exists!';
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Group $group)
-    {
-        $group->load([
-            'leadOfGroup',
-            'students'
-            ]);
-     
-        return view('groups.show', compact('group'));
+    public function show($id)
+    { 
+        $group = Group::find($id);
+        if ($group !== null) {
+            return $group->toJSON();
+        }
+        return "Group is not found!";
     }
 
     /**
