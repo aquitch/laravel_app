@@ -7,11 +7,36 @@ use App\Http\Requests\StoreGroupRequest;
 use App\Models\Group;
 use App\Models\User;
 
+/**
+* @OA\Info(
+* title="Swagger with Laravel",
+* version="1.0.0",
+* )
+* @OA\SecurityScheme(
+* type="http",
+* securityScheme="bearerAuth",
+* scheme="bearer",
+* bearerFormat="JWT"
+* )
+*/
+
 class APIGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    /**
+    * @OA\Get(
+    * path="/api/groups",
+    * summary="Get a list of users",
+    * tags={"Groups"},
+    * @OA\Response(
+    * response=200,
+    * description="List of groups",
+    * ),
+    * )
+    */
     public function index()
     {
         $groups = Group::all();
