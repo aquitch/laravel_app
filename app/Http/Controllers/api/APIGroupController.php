@@ -33,7 +33,10 @@ class APIGroupController extends Controller
     * tags={"Groups"},
     * @OA\Response(
     * response=200,
-    * description="List of groups",
+    * description="List of groups"),
+    * @OA\Response(
+    * response=404,
+    * description="Not found!"
     * ),
     * )
     */
